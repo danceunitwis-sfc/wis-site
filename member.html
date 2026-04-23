@@ -5,6 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>メンバー限定ページ</title>
     <link rel="stylesheet" href="style.css">
+
+    <script>
+        if (sessionStorage.getItem("memberAuthenticated") !== "true") {
+            alert("このページを見るにはログインが必要です。");
+            location.href = "login.html";
+        }
+    </script>
+
+    <style>
+        .member-top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 20px auto 0;
+            max-width: 1100px;
+            padding: 0 20px;
+        }
+
+        .member-status {
+            font-size: 0.95rem;
+            color: #555;
+            background: #fff;
+            padding: 10px 16px;
+            border-radius: 999px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .logout-btn {
+            display: inline-block;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 999px;
+            background: #ff4d6d;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .logout-btn:hover {
+            background: #e63b5d;
+        }
+    </style>
 </head>
 <body class="member-page">
 
@@ -16,9 +62,17 @@
         </div>
     </header>
 
+    <div class="member-top-bar">
+        <div class="member-status">
+            ログイン中：
+            <span id="memberIdDisplay">メンバー</span>
+        </div>
+        <button class="logout-btn" onclick="logout()">ログアウト</button>
+    </div>
+
     <main class="member-main">
         <section class="member-section">
-            <h2>　</h2>
+            <h2>お知らせ</h2>
             <div class="member-card-grid">
                 <div class="member-card">
                     <h3>次回練習</h3>
@@ -27,7 +81,7 @@
                 <div class="member-card">
                     <h3>思い出写真</h3>
                     <p>イベントや練習の写真をまとめて見られます。</p>
-                     <a href="photos.html" target="_blank" class="member-link-btn">写真を見る</a>
+                    <a href="photos.html" target="_blank" class="member-link-btn">写真を見る</a>
                 </div>
                 <div class="member-card">
                     <h3>連絡事項</h3>
@@ -51,8 +105,8 @@
                 </div>
                 <div class="member-card">
                     <h3>過去公演</h3>
-                    <p>過去の公演の動画が見られます</p>
-                     <a href="dancevideo.html" target="_blank" class="member-link-btn">過去公演を見る</a>
+                    <p>過去の公演の動画が見られます。</p>
+                    <a href="dancevideo.html" target="_blank" class="member-link-btn">過去公演を見る</a>
                 </div>
             </div>
         </section>
@@ -68,6 +122,20 @@
             </div>
         </section>
     </main>
+
+    <script>
+        const memberId = sessionStorage.getItem("memberStudentId");
+        if (memberId) {
+            document.getElementById("memberIdDisplay").textContent = memberId;
+        }
+
+        function logout() {
+            sessionStorage.removeItem("memberAuthenticated");
+            sessionStorage.removeItem("memberStudentId");
+            alert("ログアウトしました。");
+            location.href = "login.html";
+        }
+    </script>
 
 </body>
 </html>
