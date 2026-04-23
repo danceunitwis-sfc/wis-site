@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>過去公演動画 | Dance Unit W+I&S</title>
     <link rel="stylesheet" href="style.css">
+
+    <script>
+        if (localStorage.getItem("memberAuthenticated") !== "true") {
+            alert("このページを見るにはログインが必要です。");
+            location.href = "login.html";
+        }
+    </script>
+
     <style>
         body.video-page {
             margin: 0;
@@ -65,6 +73,41 @@
         .video-intro p {
             color: #666;
             line-height: 1.8;
+        }
+
+        .video-top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .video-status {
+            font-size: 0.95rem;
+            color: #555;
+            background: #fff;
+            padding: 10px 16px;
+            border-radius: 999px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .logout-btn {
+            display: inline-block;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 999px;
+            background: #ff4d6d;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .logout-btn:hover {
+            background: #e63b5d;
         }
 
         .filter-buttons {
@@ -174,10 +217,18 @@
     <header class="video-header">
         <h1>過去公演動画</h1>
         <p>Dance Unit W+I&S のこれまでの公演動画をまとめました</p>
-        <a href="index.html" class="back-home">トップページに戻る</a>
+        <a href="member.html" class="back-home">メンバー限定ページに戻る</a>
     </header>
 
     <main class="video-main">
+        <div class="video-top-bar">
+            <div class="video-status">
+                ログイン中：
+                <span id="memberIdDisplay">メンバー</span>
+            </div>
+            <button class="logout-btn" onclick="logout()">ログアウト</button>
+        </div>
+
         <section class="video-intro">
             <h2>Archive Movie</h2>
             <p>
@@ -198,70 +249,70 @@
                 <div class="video-year">2020年</div>
                 <div class="video-title">19春公演</div>
                 <div class="video-category">春公演</div>
-                <a href="ここにYouTubeリンクを貼る" target="_blank" class="video-button">動画を見る</a>
+                <a href="ここにYouTubeリンクを貼る" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="retirement">
                 <div class="video-year">2021年</div>
                 <div class="video-title">18引退公演</div>
                 <div class="video-category">引退公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdG9EaDgxrtqs7YTczOlcUig" target="_blank" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdG9EaDgxrtqs7YTczOlcUig" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="spring">
                 <div class="video-year">2022年</div>
                 <div class="video-title">20春公演</div>
                 <div class="video-category">春公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdGAlCLM9_P6mXccj_uTS-v-" target="_blank" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdGAlCLM9_P6mXccj_uTS-v-" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="retirement">
                 <div class="video-year">2022年</div>
                 <div class="video-title">19引退公演</div>
                 <div class="video-category">引退公演</div>
-                <a href="ここにYouTubeリンクを貼る" target="_blank" class="video-button">動画を見る</a>
+                <a href="ここにYouTubeリンクを貼る" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="other">
                 <div class="video-year">2023年</div>
                 <div class="video-title">21七夕祭</div>
                 <div class="video-category">その他</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdE00Y5OaeaLqwHSZM1XaNeb" target="_blank" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdE00Y5OaeaLqwHSZM1XaNeb" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="retirement">
                 <div class="video-year">2023年</div>
                 <div class="video-title">20引退公演</div>
                 <div class="video-category">引退公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdFlwMayNbAwc5kTyBXlrFme" target="_blank" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdFlwMayNbAwc5kTyBXlrFme" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="spring">
                 <div class="video-year">2024年</div>
                 <div class="video-title">22春公演</div>
                 <div class="video-category">春公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdHdpCyo7hjqkRQ9CLFHuu0b" target="_blank" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdHdpCyo7hjqkRQ9CLFHuu0b" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="retirement">
                 <div class="video-year">2024年</div>
                 <div class="video-title">21引退公演</div>
                 <div class="video-category">引退公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdH5XrHmhBFgo04EJEI2j-ZA" target="_blank" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdH5XrHmhBFgo04EJEI2j-ZA" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="spring">
                 <div class="video-year">2025年</div>
                 <div class="video-title">23春公演</div>
                 <div class="video-category">春公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdEfFp-gPiG1dffhBJ2gQBkI" target="_blank" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdEfFp-gPiG1dffhBJ2gQBkI" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="retirement">
                 <div class="video-year">2025年</div>
                 <div class="video-title">22引退公演</div>
                 <div class="video-category">引退公演</div>
-                <a href="https://www.youtube.com/playlist?app=desktop&list=PLhkctw2ZtEdGz7H--J4VPxTFE8HBJSZeO" target="_blank" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?app=desktop&list=PLhkctw2ZtEdGz7H--J4VPxTFE8HBJSZeO" class="video-button">動画を見る</a>
             </div>
         </section>
     </main>
@@ -271,6 +322,18 @@
     </footer>
 
     <script>
+        const memberId = localStorage.getItem("memberStudentId");
+        if (memberId) {
+            document.getElementById("memberIdDisplay").textContent = memberId;
+        }
+
+        function logout() {
+            localStorage.removeItem("memberAuthenticated");
+            localStorage.removeItem("memberStudentId");
+            alert("ログアウトしました。");
+            location.href = "login.html";
+        }
+
         const filterButtons = document.querySelectorAll(".filter-btn");
         const videoCards = document.querySelectorAll(".video-card");
 
