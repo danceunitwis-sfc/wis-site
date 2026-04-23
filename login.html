@@ -42,6 +42,9 @@
   </div>
 
   <script>
+    const validIds = ["72245012", "72481470", "72481138"];
+    const validPassword = "danceunitwis";
+
     window.onload = function () {
       const savedId = localStorage.getItem("savedStudentId");
       if (savedId) {
@@ -69,7 +72,7 @@
         localStorage.removeItem("savedStudentId");
       }
 
-      if (id === "72245012" && pass === "danceunitwis") {
+      if (validIds.includes(id) && pass === validPassword) {
         localStorage.setItem("memberAuthenticated", "true");
         localStorage.setItem("memberStudentId", id);
         window.location.href = "member.html";
