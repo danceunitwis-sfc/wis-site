@@ -70,8 +70,8 @@
       }
 
       if (id === "72245012" && pass === "danceunitwis") {
-        sessionStorage.setItem("memberAuthenticated", "true");
-        sessionStorage.setItem("memberStudentId", id);
+        localStorage.setItem("memberAuthenticated", "true");
+        localStorage.setItem("memberStudentId", id);
         window.location.href = "member.html";
       } else {
         alert("学籍番号またはパスワードが違います");
