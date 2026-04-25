@@ -1,25 +1,149 @@
-/* PC・スマホ共通：ログイン表示とお知らせの重なり修正 */
-.member-main > p:first-of-type {
-    position: absolute;
-    top: 10px;
-    right: 30px;
-    font-size: 16px;
-    color: #666;
-    font-weight: 600;
-    white-space: nowrap;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.member-main .logout-btn,
-.member-main button {
-    position: absolute;
-    top: 45px;
-    right: 30px;
+body {
+    font-family: "Yu Gothic", "Hiragino Sans", sans-serif;
+    background-color: #f7f7f7;
+    color: #222;
+    line-height: 1.8;
 }
 
-.member-section:first-of-type {
-    padding-top: 90px;
+/* ヘッダー */
+header {
+    background-image: url("images/wispicture.jpg");
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 120px 20px 80px;
+    position: relative;
 }
 
-.member-section:first-of-type h2 {
-    margin-top: 0;
+header h1 {
+    font-size: 48px;
+}
+
+nav {
+    margin-top: 20px;
+}
+
+nav a {
+    margin: 0 12px;
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+}
+
+/* メイン */
+main {
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+}
+
+/* --------------------
+   メンバー限定ページ
+-------------------- */
+.member-page {
+    background: #f4f6fb;
+}
+
+.member-header {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                url("images/wispicture.jpg");
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.member-header h1 {
+    font-size: 48px;
+}
+
+/* 🔥ログインバー */
+.member-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px auto 30px;
+    max-width: 1100px;
+    padding: 0 20px;
+}
+
+/* ログイン表示 */
+.member-status {
+    background: white;
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-size: 14px;
+}
+
+/* ログアウト */
+.logout-btn {
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+/* メイン */
+.member-main {
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+}
+
+/* セクション */
+.member-section {
+    margin-bottom: 40px;
+}
+
+.member-section h2 {
+    font-size: 28px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* カード */
+.member-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.member-card {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+}
+
+/* --------------------
+   スマホ対応
+-------------------- */
+@media screen and (max-width: 768px) {
+
+    header h1 {
+        font-size: 32px;
+    }
+
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .member-top-bar {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
 }
