@@ -541,3 +541,7 @@ footer {
 .video-button:hover {
     background: #3f37c9;
 }
+
+.hidden {
+    display: none;
+}
