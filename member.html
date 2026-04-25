@@ -52,6 +52,7 @@
         }
     </style>
 </head>
+
 <body class="member-page">
 
     <header class="member-header">
@@ -71,6 +72,7 @@
     </div>
 
     <main class="member-main">
+
         <section class="member-section">
             <h2>お知らせ</h2>
             <div class="member-card-grid">
@@ -78,11 +80,13 @@
                     <h3>次回練習</h3>
                     <p>次回の練習は 4月25日 18:00〜 です。</p>
                 </div>
+
                 <div class="member-card">
                     <h3>思い出写真</h3>
                     <p>イベントや練習の写真をまとめて見られます。</p>
                     <a href="photos.html" class="member-link-btn">写真を見る</a>
                 </div>
+
                 <div class="member-card">
                     <h3>連絡事項</h3>
                     <p>衣装サイズの提出を今週中にお願いします。</p>
@@ -93,21 +97,29 @@
         <section class="member-section">
             <h2>メンバー向けコンテンツ</h2>
             <div class="member-card-grid">
+
                 <div class="member-card">
                     <h3>練習動画</h3>
-                    <p>振り入れ動画や復習用動画をここに載せられます。</p>
-                    <a href="#" class="member-link-btn">見る</a>
+                    <p>振り入れ動画や復習用動画を確認できます。</p>
+                    <a href="practice-videos.html" class="member-link-btn">
+                        練習動画を見る
+                    </a>
                 </div>
+
                 <div class="member-card">
                     <h3>共有資料</h3>
                     <p>出演資料、タイムテーブル、持ち物一覧などを掲載できます。</p>
                     <a href="#" class="member-link-btn">開く</a>
                 </div>
+
                 <div class="member-card">
                     <h3>過去公演</h3>
                     <p>過去の公演の動画が見られます。</p>
-                    <a href="dancevideo.html" class="member-link-btn">過去公演を見る</a>
+                    <a href="dancevideo.html" class="member-link-btn">
+                        過去公演を見る
+                    </a>
                 </div>
+
             </div>
         </section>
 
@@ -121,10 +133,12 @@
                 </p>
             </div>
         </section>
+
     </main>
 
     <script>
         const memberId = localStorage.getItem("memberStudentId");
+
         if (memberId) {
             document.getElementById("memberIdDisplay").textContent = memberId;
         }
