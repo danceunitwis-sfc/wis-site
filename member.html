@@ -168,10 +168,29 @@
     }
 
     function formatScheduleForMember(schedule) {
-        return `${formatDateJapanese(schedule.date)} ${schedule.time}<br>${schedule.title}｜${schedule.place}<br>${schedule.genres.join(" / ")}`;
+        return `
+            ${formatDateJapanese(schedule.date)} ${schedule.time}<br>
+            ${schedule.title}｜${schedule.place}<br>
+            ${schedule.genres.join(" / ")}
+        `;
     }
 
     function updateNextSchedules() {
+        const nextPracticeElement = document.getElementById("nextPractice");
+        const nextRunthroughElement = document.getElementById("nextRunthrough");
+
+        if (typeof practiceSchedules === "undefined") {
+            if (nextPracticeElement) {
+                nextPracticeElement.innerHTML = "schedules.js が読み込めていません。";
+            }
+
+            if (nextRunthroughElement) {
+                nextRunthroughElement.innerHTML = "schedules.js が読み込めていません。";
+            }
+
+            return;
+        }
+
         const today = new Date();
         today.setHours(0, 0, 0, 0);
 
@@ -188,9 +207,6 @@
             schedule.type === "通し"
         );
 
-        const nextPracticeElement = document.getElementById("nextPractice");
-        const nextRunthroughElement = document.getElementById("nextRunthrough");
-
         if (nextPracticeElement) {
             nextPracticeElement.innerHTML = nextPractice
                 ? formatScheduleForMember(nextPractice)
@@ -205,7 +221,7 @@
     }
 
     updateNextSchedules();
-</script>    
+</script>
 
 </body>
 </html>
