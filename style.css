@@ -43,11 +43,22 @@ nav {
 nav a {
     color: black;
     text-decoration: none;
-    margin: 0 12px;
+    margin: 0 8px;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
     display: inline-block;
-    transition: 0.2s;
+
+    /* 高級感ポイント */
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    padding: 10px 16px;
+    border-radius: 999px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    transition: 0.25s;
 }
 
 nav a:hover {
