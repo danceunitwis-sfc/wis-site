@@ -163,9 +163,68 @@
         }
 
         .genre-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
             line-height: 1.7;
-            color: #4a4035;
         }
+
+        .genre-tag {
+            display: inline-block;
+            padding: 6px 11px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: bold;
+            letter-spacing: 0.02em;
+            color: #fff;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.14);
+            white-space: nowrap;
+        }
+
+        /* ジャンル別カラー */
+        .genre-hiphop {
+            background: linear-gradient(135deg, #111827, #4b5563);
+        }
+
+        .genre-無house {
+            background: linear-gradient(135deg, #0f766e, #14b8a6);
+        }
+
+        .genre-限house {
+            background: linear-gradient(135deg, #047857, #22c55e);
+        }
+
+        .genre-pop {
+            background: linear-gradient(135deg, #db2777, #f472b6);
+        }
+
+        .genre-lock {
+            background: linear-gradient(135deg, #d97706, #fbbf24);
+            color: #2b1a00;
+        }
+
+        .genre-punking {
+            background: linear-gradient(135deg, #7c3aed, #c084fc);
+        }
+
+        .genre-jazz {
+            background: linear-gradient(135deg, #991b1b, #ef4444);
+        }
+
+        .genre-girls {
+            background: linear-gradient(135deg, #be185d, #fb7185);
+        }
+
+        .genre-break {
+            background: linear-gradient(135deg, #1d4ed8, #60a5fa);
+        }
+
+        .genre-OP {
+            background: linear-gradient(135deg, #6b7280, #d1d5db);
+            color: #222;
+        }
+
+
 
         .empty-schedule {
             text-align: center;
@@ -341,7 +400,11 @@
                                 ${schedule.title}
                             </span>
                         </td>
-                        <td class="genre-list">${schedule.genres.join(" / ")}</td>
+                        <td class="genre-list">
+                            ${schedule.genres.map(genre => {
+                                return `<span class="genre-tag genre-${genre}">${genre}</span>`;
+                            }).join("")}
+                        </td>
                         <td>${schedule.place}</td>
                     </tr>
                 `;
